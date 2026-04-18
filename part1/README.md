@@ -1,5 +1,10 @@
 # ⚠️⚠️⚠️HBnB - Technical Documentation
 
+## Introduction
+    This documentation provides a detailed technical blueprint for the HBnB application.
+    It covers the high-level architecture, the detailed business logic models, and the sequence of interactions for key API calls.
+    This document serves as a guide for the implementation phase to ensure a robust and scalable system.
+
 ## ‼️‼️‼️TASK 0. High-Level Package Diagram
 
   ### Overview
@@ -198,7 +203,6 @@ sequenceDiagram
     participant BusinessLogic
     participant Database
 
-    Note over User, Database: 1. User Registration
     User->>API: Post /register (Email, Password)
     API->>BusinessLogic: Validate User Data
     BusinessLogic->>Database: Save New User
@@ -206,7 +210,6 @@ sequenceDiagram
     BusinessLogic-->>API: Return User Object
     API-->>User: 201 Created
 
-    Note over User, Database: 2. Place Creation
     User->>API: Post /places (Title, Price)
     API->>BusinessLogic: Validate Place Data
     BusinessLogic->>Database: Save Place Details
