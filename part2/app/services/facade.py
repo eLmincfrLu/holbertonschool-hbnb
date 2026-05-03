@@ -5,8 +5,9 @@ class HBnBFacade:
     def __init__(self):
         self.user_repo = InMemoryRepository()
         self.amenity_repo = InMemoryRepository()
+        self.place_repo = InMemoryRepository()
 
-    # User metodları
+    # --- User Metodları ---
     def create_user(self, user_data):
         user = User(**user_data)
         self.user_repo.add(user)
@@ -24,7 +25,7 @@ class HBnBFacade:
     def update_user(self, user_id, user_data):
         return self.user_repo.update(user_id, user_data)
 
-    # Amenity metodları
+    # --- Amenity Metodları ---
     def create_amenity(self, amenity_data):
         from app.models.amenity import Amenity
         amenity = Amenity(**amenity_data)
@@ -39,5 +40,32 @@ class HBnBFacade:
 
     def update_amenity(self, amenity_id, amenity_data):
         return self.amenity_repo.update(amenity_id, amenity_data)
+
+    # --- Place Metodları ---
+    def create_place(self, place_data):
+        from app.models.place import Place
+        owner = self.get_user(place_data['owner_id'])
+        if not owner:
+            raise ValueError("Owner not found")
+        
+        amenity_ids = place_data.pop('amenities', [])
+        place = Place(**place_data, owner=owner)
+        
+        for amenity_id in amenity_ids:
+            amenity = self.get_amenity(amenity_id)
+            if amenity:
+                place.add_amenity(amenity)
+        
+        self.place_repo.add(place)
+        return place
+
+    def get_place(self, place_id):
+        return self.place_repo.get(place_id)
+
+    def get_all_places(self):
+        return self.place_repo.get_all()
+
+    def update_place(self, place_id, place_data):
+        return self.place_repo.update(place_id, place_data)
 
 facade = HBnBFacade()
