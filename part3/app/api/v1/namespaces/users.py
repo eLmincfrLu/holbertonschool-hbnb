@@ -29,6 +29,14 @@ class UserList(Resource):
 class UserMe(Resource):
     @jwt_required()
     def get(self):
-        current_user = get_jwt_identity()
-        user = User.query.get(current_user['id'])
-        return {'id': user.id, 'email': user.email, 'first_name': user.first_name}, 200
+        # Artıq get_jwt_identity() bizə birbaşa user_id stringini qaytaracaq
+        user_id = get_jwt_identity()
+        user = User.query.get(user_id)
+        if not user:
+            return {'error': 'User not found'}, 404
+        return {
+            'id': user.id, 
+            'email': user.email, 
+            'first_name': user.first_name,
+            'last_name': user.last_name
+        }, 200

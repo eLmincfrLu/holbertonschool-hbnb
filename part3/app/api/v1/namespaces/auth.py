@@ -15,7 +15,14 @@ class LoginResource(Resource):
     def post(self):
         data = api.payload
         user = User.query.filter_by(email=data['email']).first()
+        
         if user and user.verify_password(data['password']):
-            access_token = create_access_token(identity={'id': user.id, 'is_admin': user.is_admin})
+            # IDENTITY MÜTLƏQ STRİNG OLMALIDIR (user.id)
+            # Digər məlumatları (məs: is_admin) additional_claims ilə göndəririk
+            access_token = create_access_token(
+                identity=user.id, 
+                additional_claims={'is_admin': user.is_admin}
+            )
             return {'access_token': access_token}, 200
+            
         return {'error': 'Invalid credentials'}, 401
