@@ -17,7 +17,7 @@ class HBnBFacade:
         return self.user_repo.get(user_id)
 
     def get_user_by_email(self, email):
-        # Bu funksiya mütləq olmalıdır!
+        # Bu hissə mütləq HBnBFacade-in daxilində olmalıdır
         return next((u for u in self.user_repo.get_all() if u.email == email), None)
 
     def get_all_users(self):
@@ -38,9 +38,6 @@ class HBnBFacade:
 
     def get_all_amenities(self):
         return self.amenity_repo.get_all()
-
-    def update_amenity(self, amenity_id, amenity_data):
-        return self.amenity_repo.update(amenity_id, amenity_data)
 
     # --- Place Metodları ---
     def create_place(self, place_data):
@@ -66,8 +63,5 @@ class HBnBFacade:
     def get_all_places(self):
         return self.place_repo.get_all()
 
-    def update_place(self, place_id, place_data):
-        return self.place_repo.update(place_id, place_data)
-
-# Ən sonda bu sətir mütləq olmalıdır
+# Obyekti yaratmağı unutma
 facade = HBnBFacade()
