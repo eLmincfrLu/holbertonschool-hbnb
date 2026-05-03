@@ -17,6 +17,7 @@ class HBnBFacade:
         return self.user_repo.get(user_id)
 
     def get_user_by_email(self, email):
+        # Bu funksiya mütləq olmalıdır!
         return next((u for u in self.user_repo.get_all() if u.email == email), None)
 
     def get_all_users(self):
@@ -68,4 +69,5 @@ class HBnBFacade:
     def update_place(self, place_id, place_data):
         return self.place_repo.update(place_id, place_data)
 
+# Ən sonda bu sətir mütləq olmalıdır
 facade = HBnBFacade()
