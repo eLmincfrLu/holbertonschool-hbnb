@@ -1,43 +1,35 @@
-:root {
-    --primary-color: #ff385c;
-    --text-color: #484848;
-    --bg-color: #ffffff;
-}
-
-body { font-family: 'Circular', -apple-system, system-ui, Roboto, sans-serif; color: var(--text-color); margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f7f7f7; color: #222; }
 
 header {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 15px 80px; border-bottom: 1px solid #ebebeb;
+    background: white; padding: 20px 10% ; display: flex;
+    justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.logo { height: 32px; cursor: pointer; }
+.logo { height: 40px; width: auto; }
+
+/* Login Form Dizaynı */
+.form {
+    background: white; max-width: 400px; margin: 100px auto;
+    padding: 40px; border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex; flex-direction: column; gap: 20px;
+}
+
+.form h2 { margin-bottom: 10px; font-size: 24px; text-align: center; }
+
+input {
+    width: 100%; padding: 12px 15px; border: 1px solid #ccc;
+    border-radius: 8px; font-size: 16px; outline: none;
+}
+
+input:focus { border-color: #ff385c; }
 
 .login-button {
-    background-color: var(--primary-color); color: white;
-    padding: 10px 24px; border-radius: 8px; border: none;
-    font-weight: 600; cursor: pointer; transition: 0.2s;
+    width: 100%; background-color: #ff385c; color: white;
+    padding: 14px; border: none; border-radius: 8px;
+    font-size: 16px; font-weight: 600; cursor: pointer; transition: 0.3s;
 }
 
 .login-button:hover { background-color: #e31c5f; }
-
-.places-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 24px; padding: 40px 80px;
-}
-
-.place-card {
-    border: 1px solid #ddd; border-radius: 12px; overflow: hidden;
-    transition: transform 0.3s; cursor: pointer; padding: 0 0 15px 0;
-}
-
-.place-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
-.place-card h3 { padding: 0 15px; margin: 15px 0 5px 0; }
-.place-card p { padding: 0 15px; color: #717171; }
-
-.details-button {
-    display: block; margin: 10px 15px; text-align: center;
-    border: 1px solid #222; padding: 8px; border-radius: 8px;
-    text-decoration: none; color: #222; font-weight: 600;
-}
