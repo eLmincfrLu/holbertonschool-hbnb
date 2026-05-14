@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HBnB - Place Details</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="images/logo.png" alt="HBnB Logo" class="logo"></a>
+        <nav>
+            <a href="index.html" class="login-button">Back to Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="place-details" class="place-details">
+            <!-- JavaScript buranı dolduracaq -->
+            <div id="place-info" class="place-info">
+                <h1 id="place-name">Loading...</h1>
+                <p id="place-description"></p>
+                <p><strong>Price per night:</strong> $<span id="place-price"></span></p>
+                <div id="place-amenities">
+                    <h3>Amenities:</h3>
+                    <ul id="amenities-list"></ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews">
+            <h3>Reviews</h3>
+            <div id="reviews-list">
+                <!-- Rəylər bura əlavə olunacaq -->
+            </div>
+        </section>
+
+        <!-- Yalnız login olanlar üçün görünəcək -->
+        <section id="add-review" style="display: none; margin: 20px;">
+            <button id="add-review-btn" class="login-button">Add a Review</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 HBnB Evolution. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts/scripts.js"></script>
+</body>
+</html>
